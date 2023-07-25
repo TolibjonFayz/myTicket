@@ -38,6 +38,7 @@ export class VenueService {
     return venue[1][0].dataValues;
   }
 
+  
   //Delete venue by id
   async deleteVenue(id: number): Promise<number> {
     const venue = await this.venueRepository.destroy({ where: { id } });
