@@ -9,6 +9,8 @@ import { VenueTypeModule } from './venue_type/venue_type.module';
 import { Venue_type } from './venue_type/models/venue_type.model';
 import { SeatModule } from './seat/seat.module';
 import { Seat } from './seat/models/seat.model';
+import { SeatTypeModule } from './seat_type/seat_type.module';
+import { Seat_type } from './seat_type/models/seat_type.model';
 
 @Module({
   imports: [
@@ -20,7 +22,7 @@ import { Seat } from './seat/models/seat.model';
       username: process.env.POSTGRES_USER,
       password: String(process.env.POSTGRES_PASSWORD),
       database: process.env.POSTGRES_DB,
-      models: [Venue, Venue_photo, Venue_type, Seat],
+      models: [Venue, Venue_photo, Venue_type, Seat, Seat_type],
       autoLoadModels: true,
       logging: true,
     }),
@@ -28,6 +30,7 @@ import { Seat } from './seat/models/seat.model';
     VenuePhotoModule,
     VenueTypeModule,
     SeatModule,
+    SeatTypeModule,
   ],
   controllers: [],
   providers: [],

@@ -26,7 +26,6 @@ export class SeatService {
     return seat;
   }
 
-
   // //Update seat by id
   // async updateSeat(id: number, updateSeatDto: UpdateSeatDto): Promise<Seat> {
   //   const seat = await this.SeatRepository.update(updateSeatDto, {
