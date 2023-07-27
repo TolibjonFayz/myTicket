@@ -11,6 +11,7 @@ import { SeatModule } from './seat/seat.module';
 import { Seat } from './seat/models/seat.model';
 import { SeatTypeModule } from './seat_type/seat_type.module';
 import { Seat_type } from './seat_type/models/seat_type.model';
+import { HumanCategoryModule } from './human_category/human_category.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { Seat_type } from './seat_type/models/seat_type.model';
     VenueTypeModule,
     SeatModule,
     SeatTypeModule,
+    HumanCategoryModule,
   ],
   controllers: [],
   providers: [],
