@@ -13,6 +13,10 @@ import { SeatTypeModule } from './seat_type/seat_type.module';
 import { Seat_type } from './seat_type/models/seat_type.model';
 import { HumanCategoryModule } from './human_category/human_category.module';
 import { EventTypeModule } from './event_type/event_type.module';
+import { EventModule } from './event/event.module';
+import { EventType } from './event_type/models/event_type.model';
+import { Human_category } from './human_category/models/human_category.model';
+import { Event } from './event/models/event.model';
 
 @Module({
   imports: [
@@ -24,7 +28,16 @@ import { EventTypeModule } from './event_type/event_type.module';
       username: process.env.POSTGRES_USER,
       password: String(process.env.POSTGRES_PASSWORD),
       database: process.env.POSTGRES_DB,
-      models: [Venue, Venue_photo, Venue_type, Seat, Seat_type],
+      models: [
+        Venue,
+        Venue_photo,
+        Venue_type,
+        Seat,
+        Seat_type,
+        EventType,
+        Human_category,
+        Event,
+      ],
       autoLoadModels: true,
       logging: true,
     }),
@@ -35,6 +48,7 @@ import { EventTypeModule } from './event_type/event_type.module';
     SeatTypeModule,
     HumanCategoryModule,
     EventTypeModule,
+    EventModule,
   ],
   controllers: [],
   providers: [],
