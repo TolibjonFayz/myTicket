@@ -17,6 +17,8 @@ import { EventModule } from './event/event.module';
 import { EventType } from './event_type/models/event_type.model';
 import { Human_category } from './human_category/models/human_category.model';
 import { Event } from './event/models/event.model';
+import { TicketModule } from './ticket/ticket.module';
+import { Ticket } from './ticket/models/ticket.model';
 
 @Module({
   imports: [
@@ -37,6 +39,7 @@ import { Event } from './event/models/event.model';
         EventType,
         Human_category,
         Event,
+        Ticket,
       ],
       autoLoadModels: true,
       logging: true,
@@ -49,6 +52,7 @@ import { Event } from './event/models/event.model';
     HumanCategoryModule,
     EventTypeModule,
     EventModule,
+    TicketModule,
   ],
   controllers: [],
   providers: [],
