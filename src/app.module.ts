@@ -28,6 +28,8 @@ import { CustomerCard } from './customer_card/models/customerCard.model';
 import { CartModule } from './cart/cart.module';
 import { Cart } from './cart/models/cart.model';
 import { BookingModule } from './booking/booking.module';
+import { AddminModule } from './addmin/addmin.module';
+import { Admin } from './addmin/models/admin.model';
 
 @Module({
   imports: [
@@ -53,6 +55,7 @@ import { BookingModule } from './booking/booking.module';
         CustomerAdress,
         CustomerCard,
         Cart,
+        Admin,
       ],
       autoLoadModels: true,
       logging: true,
@@ -71,6 +74,7 @@ import { BookingModule } from './booking/booking.module';
     CustomerCardModule,
     CartModule,
     BookingModule,
+    AddminModule,
   ],
   controllers: [],
   providers: [],
