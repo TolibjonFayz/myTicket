@@ -27,6 +27,7 @@ import { CustomerCardModule } from './customer_card/customer_card.module';
 import { CustomerCard } from './customer_card/models/customerCard.model';
 import { CartModule } from './cart/cart.module';
 import { Cart } from './cart/models/cart.model';
+import { BookingModule } from './booking/booking.module';
 
 @Module({
   imports: [
@@ -69,6 +70,7 @@ import { Cart } from './cart/models/cart.model';
     CustomerAddressModule,
     CustomerCardModule,
     CartModule,
+    BookingModule,
   ],
   controllers: [],
   providers: [],
