@@ -21,6 +21,10 @@ import { TicketModule } from './ticket/ticket.module';
 import { Ticket } from './ticket/models/ticket.model';
 import { CustomerModule } from './customer/customer.module';
 import { Customer } from './customer/models/customer.model';
+import { CustomerAddressModule } from './customer_address/customer_address.module';
+import { CustomerAdress } from './customer_address/models/customerAdress.model';
+import { CustomerCardModule } from './customer_card/customer_card.module';
+import { CustomerCard } from './customer_card/models/customerCard.model';
 
 @Module({
   imports: [
@@ -43,6 +47,8 @@ import { Customer } from './customer/models/customer.model';
         Event,
         Ticket,
         Customer,
+        CustomerAdress,
+        CustomerCard,
       ],
       autoLoadModels: true,
       logging: true,
@@ -57,6 +63,8 @@ import { Customer } from './customer/models/customer.model';
     EventModule,
     TicketModule,
     CustomerModule,
+    CustomerAddressModule,
+    CustomerCardModule,
   ],
   controllers: [],
   providers: [],
