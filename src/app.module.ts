@@ -25,6 +25,8 @@ import { CustomerAddressModule } from './customer_address/customer_address.modul
 import { CustomerAdress } from './customer_address/models/customerAdress.model';
 import { CustomerCardModule } from './customer_card/customer_card.module';
 import { CustomerCard } from './customer_card/models/customerCard.model';
+import { CartModule } from './cart/cart.module';
+import { Cart } from './cart/models/cart.model';
 
 @Module({
   imports: [
@@ -49,6 +51,7 @@ import { CustomerCard } from './customer_card/models/customerCard.model';
         Customer,
         CustomerAdress,
         CustomerCard,
+        Cart,
       ],
       autoLoadModels: true,
       logging: true,
@@ -65,6 +68,7 @@ import { CustomerCard } from './customer_card/models/customerCard.model';
     CustomerModule,
     CustomerAddressModule,
     CustomerCardModule,
+    CartModule,
   ],
   controllers: [],
   providers: [],
