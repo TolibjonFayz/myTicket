@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { Column, DataType, Model, Table } from 'sequelize-typescript';
 
 interface seatTypeAtr {
@@ -6,6 +7,7 @@ interface seatTypeAtr {
 
 @Table({ tableName: 'Seat_type' })
 export class Seat_type extends Model<Seat_type, seatTypeAtr> {
+  @ApiProperty({ example: 1, description: 'Unique id' })
   @Column({
     type: DataType.INTEGER,
     autoIncrement: true,
@@ -13,6 +15,7 @@ export class Seat_type extends Model<Seat_type, seatTypeAtr> {
   })
   id: number;
 
+  @ApiProperty({ example: 'Plastik', description: 'O`rindiq turi' })
   @Column({
     type: DataType.STRING,
     allowNull: false,

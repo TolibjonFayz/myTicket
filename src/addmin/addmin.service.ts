@@ -26,17 +26,17 @@ export class AddminService {
     return admin;
   }
 
-  // //Update admin by id
-  // async updateAdmin(
-  //   id: number,
-  //   updateAdminDto: UpdateAdminDto,
-  // ): Promise<Admin> {
-  //   const admin = await this.AdminRepository.update(updateAdminDto, {
-  //     where: { id },
-  //     returning: true,
-  //   });
-  //   return admin[1][0].dataValues;
-  // }
+  //Update admin by id
+  async updateAdmin(
+    id: number,
+    updateAdminDto: UpdateAdminDto,
+  ): Promise<Admin> {
+    const admin = await this.AdminRepository.update(updateAdminDto, {
+      where: { id },
+      returning: true,
+    });
+    return admin[1][0].dataValues;
+  }
 
   //Delete admin by id
   async deleteAdmin(id: number): Promise<number> {

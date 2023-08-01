@@ -58,7 +58,7 @@ import { Admin } from './addmin/models/admin.model';
         Admin,
       ],
       autoLoadModels: true,
-      logging: true,
+      logging: false,
     }),
     VenueModule,
     VenuePhotoModule,
