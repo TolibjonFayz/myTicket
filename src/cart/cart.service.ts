@@ -16,13 +16,16 @@ export class CartService {
 
   //Get all carts
   async getAllCarts() {
-    const carts = await this.CartRepository.findAll();
+    const carts = await this.CartRepository.findAll({ include: { all: true } });
     return carts;
   }
 
   //Get cart by id
   async getCartById(id: number) {
-    const cart = await this.CartRepository.findOne({ where: { id } });
+    const cart = await this.CartRepository.findOne({
+      where: { id },
+      include: { all: true },
+    });
     return cart;
   }
 

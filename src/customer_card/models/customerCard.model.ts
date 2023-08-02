@@ -1,5 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import {
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from 'sequelize-typescript';
+import { Customer } from '../../customer/models/customer.model';
 
 interface customerCardAtr {
   customer_id: number;
@@ -23,6 +31,7 @@ export class CustomerCard extends Model<CustomerCard, customerCardAtr> {
   id: number;
 
   @ApiProperty({ example: 1, description: 'unique id' })
+  @ForeignKey(() => Customer)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
@@ -77,4 +86,7 @@ export class CustomerCard extends Model<CustomerCard, customerCardAtr> {
     allowNull: false,
   })
   is_main: boolean;
+
+  @BelongsTo(() => Customer)
+  custromer: Customer;
 }

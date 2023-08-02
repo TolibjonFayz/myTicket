@@ -1,5 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import {
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from 'sequelize-typescript';
+import { Seat_type } from '../../seat_type/models/seat_type.model';
 
 interface seatAtr {
   sector: number;
@@ -49,6 +57,7 @@ export class Seat extends Model<Seat, seatAtr> {
   venue_id: number;
 
   @ApiProperty({ example: 3, description: 'O`rindiq turi raqami' })
+  @ForeignKey(() => Seat_type)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
@@ -61,4 +70,7 @@ export class Seat extends Model<Seat, seatAtr> {
     allowNull: false,
   })
   location_in_schema: number;
+
+  @BelongsTo(() => Seat_type)
+  seat_type: Seat_type;
 }

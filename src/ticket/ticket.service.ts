@@ -16,13 +16,18 @@ export class TicketService {
 
   //Get all tickets
   async getAllTickets() {
-    const tickets = await this.TicketRepository.findAll();
+    const tickets = await this.TicketRepository.findAll({
+      include: { all: true },
+    });
     return tickets;
   }
 
   //Get ticket by id
   async getTicketById(id: number) {
-    const ticket = await this.TicketRepository.findOne({ where: { id } });
+    const ticket = await this.TicketRepository.findOne({
+      where: { id },
+      include: { all: true },
+    });
     return ticket;
   }
 

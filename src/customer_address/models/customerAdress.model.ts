@@ -1,5 +1,16 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import {
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from 'sequelize-typescript';
+import { Customer } from '../../customer/models/customer.model';
+import { Country } from '../../country/models/country.model';
+import { Region } from '../../region/models/region.model';
+import { District } from '../../district/models/ditrict.model';
 
 interface customerAdressAtr {
   customer_id: number;
@@ -26,6 +37,7 @@ export class CustomerAdress extends Model<CustomerAdress, customerAdressAtr> {
   id: number;
 
   @ApiProperty({ example: 1, description: 'Unique id' })
+  @ForeignKey(() => Customer)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
@@ -40,6 +52,7 @@ export class CustomerAdress extends Model<CustomerAdress, customerAdressAtr> {
   name: string;
 
   @ApiProperty({ example: 1, description: 'Davlat id' })
+  @ForeignKey(() => Country)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
@@ -47,6 +60,7 @@ export class CustomerAdress extends Model<CustomerAdress, customerAdressAtr> {
   country_id: number;
 
   @ApiProperty({ example: 1, description: 'Region id' })
+  @ForeignKey(() => Region)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
@@ -54,6 +68,7 @@ export class CustomerAdress extends Model<CustomerAdress, customerAdressAtr> {
   region_id: number;
 
   @ApiProperty({ example: 1, description: 'Ko`cha id' })
+  @ForeignKey(() => District)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
@@ -101,4 +116,16 @@ export class CustomerAdress extends Model<CustomerAdress, customerAdressAtr> {
     allowNull: false,
   })
   info: string;
+
+  @BelongsTo(() => Customer)
+  customer: Customer;
+
+  @BelongsTo(() => Country)
+  country: Country;
+
+  @BelongsTo(() => Region)
+  region: Region;
+
+  @BelongsTo(() => District)
+  district: District;
 }

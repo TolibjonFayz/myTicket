@@ -16,13 +16,18 @@ export class EventService {
 
   //Get all events
   async getAllevents() {
-    const events = await this.EventRepository.findAll();
+    const events = await this.EventRepository.findAll({
+      include: { all: true },
+    });
     return events;
   }
 
   //Get event by id
   async getEventById(id: number) {
-    const event = await this.EventRepository.findOne({ where: { id } });
+    const event = await this.EventRepository.findOne({
+      where: { id },
+      include: { all: true },
+    });
     return event;
   }
 

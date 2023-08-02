@@ -18,13 +18,18 @@ export class BookingService {
 
   //Get all bookings
   async getAllBookings() {
-    const bookings = await this.BookingRepository.findAll();
+    const bookings = await this.BookingRepository.findAll({
+      include: { all: true },
+    });
     return bookings;
   }
 
   //Get booking by id
   async getBookingById(id: number) {
-    const booking = await this.BookingRepository.findOne({ where: { id } });
+    const booking = await this.BookingRepository.findOne({
+      where: { id },
+      include: { all: true },
+    });
     return booking;
   }
 

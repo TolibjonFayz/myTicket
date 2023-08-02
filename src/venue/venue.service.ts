@@ -16,13 +16,18 @@ export class VenueService {
 
   //Get all venue
   async getAllVenues() {
-    const venues = await this.venueRepository.findAll();
+    const venues = await this.venueRepository.findAll({
+      include: { all: true },
+    });
     return venues;
   }
 
   //Get venue by id
   async getVenueById(id: number) {
-    const venue = await this.venueRepository.findOne({ where: { id } });
+    const venue = await this.venueRepository.findOne({
+      where: { id },
+      include: { all: true },
+    });
     return venue;
   }
 

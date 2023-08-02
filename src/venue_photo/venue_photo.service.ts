@@ -22,13 +22,18 @@ export class VenuePhotoService {
 
   //Get all venuePhotos
   async getAllVnuPhoto() {
-    const venue_photos = await this.venuePhotoRepository.findAll();
+    const venue_photos = await this.venuePhotoRepository.findAll({
+      include: { all: true },
+    });
     return venue_photos;
   }
 
   //Get venuePhoto by id
   async getVenuePhotoById(id: number) {
-    const venue = await this.venuePhotoRepository.findOne({ where: { id } });
+    const venue = await this.venuePhotoRepository.findOne({
+      where: { id },
+      include: { all: true },
+    });
     return venue;
   }
 

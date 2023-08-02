@@ -1,5 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Table, Column, DataType, Model } from 'sequelize-typescript';
+import {
+  Table,
+  Column,
+  DataType,
+  Model,
+  ForeignKey,
+  BelongsTo,
+} from 'sequelize-typescript';
+import { Venue_type } from '../../venue_type/models/venue_type.model';
+import { Region } from '../../region/models/region.model';
+import { District } from '../../district/models/ditrict.model';
 
 interface venueAtr {
   name: string;
@@ -62,8 +72,9 @@ export class Venue extends Model<Venue, venueAtr> {
   phone: string;
 
   @ApiProperty({ example: 1, description: 'Venue type id...' })
+  @ForeignKey(() => Venue_type)
   @Column({
-    type: DataType.STRING,
+    type: DataType.INTEGER,
     allowNull: false,
   })
   venue_type_id: number;
@@ -76,16 +87,27 @@ export class Venue extends Model<Venue, venueAtr> {
   schema: string;
 
   @ApiProperty({ example: 1, description: 'Region id...' })
+  @ForeignKey(() => Region)
   @Column({
-    type: DataType.STRING,
+    type: DataType.INTEGER,
     allowNull: false,
   })
   region_id: number;
 
   @ApiProperty({ example: 2, description: 'District id...' })
+  @ForeignKey(() => District)
   @Column({
-    type: DataType.STRING,
+    type: DataType.INTEGER,
     allowNull: false,
   })
   district_id: number;
+
+  @BelongsTo(() => District)
+  district: District;
+
+  @BelongsTo(() => Region)
+  region: Region;
+
+  @BelongsTo(() => Venue_type)
+  venue_type: Venue_type;
 }

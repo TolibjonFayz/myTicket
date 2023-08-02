@@ -23,7 +23,9 @@ export class CustomerCardService {
 
   //Get all customerCards
   async getAllCustomerCards() {
-    const customerCards = await this.CustomerCardRepository.findAll();
+    const customerCards = await this.CustomerCardRepository.findAll({
+      include: { all: true },
+    });
     return customerCards;
   }
 
@@ -31,6 +33,7 @@ export class CustomerCardService {
   async getCustomerCardById(id: number) {
     const customerCards = await this.CustomerCardRepository.findOne({
       where: { id },
+      include: { all: true },
     });
     return customerCards;
   }

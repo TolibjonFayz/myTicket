@@ -16,13 +16,16 @@ export class SeatService {
 
   //Get all venue
   async getAllSeats() {
-    const seats = await this.SeatRepository.findAll();
+    const seats = await this.SeatRepository.findAll({ include: { all: true } });
     return seats;
   }
 
   //Get seat by id
   async getSeatById(id: number) {
-    const seat = await this.SeatRepository.findOne({ where: { id } });
+    const seat = await this.SeatRepository.findOne({
+      where: { id },
+      include: { all: true },
+    });
     return seat;
   }
 

@@ -1,5 +1,16 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import {
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from 'sequelize-typescript';
+import { EventType } from '../../event_type/models/event_type.model';
+import { Human_category } from '../../human_category/models/human_category.model';
+import { Venue } from '../../venue/models/venue.model';
+import { Lang } from '../../lang/models/lang.model';
 
 interface eventAtr {
   name: string;
@@ -76,6 +87,7 @@ export class Event extends Model<Event, eventAtr> {
   info: string;
 
   @ApiProperty({ example: 1, description: 'Qanaqa turdagi event bu...' })
+  @ForeignKey(() => EventType)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
@@ -83,6 +95,7 @@ export class Event extends Model<Event, eventAtr> {
   event_type_id: number;
 
   @ApiProperty({ example: 1, description: 'human categorysi...' })
+  @ForeignKey(() => Human_category)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
@@ -90,6 +103,7 @@ export class Event extends Model<Event, eventAtr> {
   human_category_id: number;
 
   @ApiProperty({ example: 2, description: 'Venue idsi...' })
+  @ForeignKey(() => Venue)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
@@ -97,6 +111,7 @@ export class Event extends Model<Event, eventAtr> {
   venue_id: number;
 
   @ApiProperty({ example: 2, description: 'Lang idsi...' })
+  @ForeignKey(() => Lang)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
@@ -109,4 +124,16 @@ export class Event extends Model<Event, eventAtr> {
     allowNull: false,
   })
   release_date: string;
+
+  @BelongsTo(() => EventType)
+  event_type: EventType;
+
+  @BelongsTo(() => Human_category)
+  human_category: Human_category;
+
+  @BelongsTo(() => Venue)
+  venue: Venue;
+
+  @BelongsTo(() => Lang)
+  lang: Lang;
 }

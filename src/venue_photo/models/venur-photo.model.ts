@@ -1,5 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import {
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from 'sequelize-typescript';
+import { Venue } from '../../venue/models/venue.model';
 
 interface venue_photo_Atr {
   venue_id: number;
@@ -17,6 +25,7 @@ export class Venue_photo extends Model<Venue_photo, venue_photo_Atr> {
   id: number;
 
   @ApiProperty({ example: 1, description: 'Venue id...' })
+  @ForeignKey(() => Venue)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
@@ -29,4 +38,7 @@ export class Venue_photo extends Model<Venue_photo, venue_photo_Atr> {
     allowNull: false,
   })
   url: string;
+
+  @BelongsTo(() => Venue)
+  venue: Venue;
 }

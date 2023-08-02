@@ -23,7 +23,9 @@ export class CustomerAddressService {
 
   //Get all customerAdresses
   async getAllCustomerAdresses() {
-    const customerAdresses = await this.CustomerAdressRepository.findAll();
+    const customerAdresses = await this.CustomerAdressRepository.findAll({
+      include: { all: true },
+    });
     return customerAdresses;
   }
 
@@ -31,6 +33,7 @@ export class CustomerAddressService {
   async getCustomerAdressById(id: number) {
     const customerAdress = await this.CustomerAdressRepository.findOne({
       where: { id },
+      include: { all: true },
     });
     return customerAdress;
   }
