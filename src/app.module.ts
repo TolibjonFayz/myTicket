@@ -30,6 +30,19 @@ import { Cart } from './cart/models/cart.model';
 import { BookingModule } from './booking/booking.module';
 import { AddminModule } from './addmin/addmin.module';
 import { Admin } from './addmin/models/admin.model';
+import { RegionModule } from './region/region.module';
+import { Region } from './region/models/region.model';
+import { DistrictModule } from './district/district.module';
+import { LangModule } from './lang/lang.module';
+import { CountryModule } from './country/country.module';
+import { Lang } from './lang/models/lang.model';
+import { District } from './district/models/ditrict.model';
+import { Country } from './country/models/country.model';
+import { PaymentMethodModule } from './payment_method/payment_method.module';
+import { DeliveryMethodModule } from './delivery_method/delivery_method.module';
+import { Payment_method } from './payment_method/models/payment_method.model';
+import { Delivery_method } from './delivery_method/model/delivery_method.model';
+import { DiscountCouponModule } from './discount_coupon/discount_coupon.module';
 
 @Module({
   imports: [
@@ -56,6 +69,12 @@ import { Admin } from './addmin/models/admin.model';
         CustomerCard,
         Cart,
         Admin,
+        Region,
+        Lang,
+        District,
+        Country,
+        Payment_method,
+        Delivery_method,
       ],
       autoLoadModels: true,
       logging: false,
@@ -75,6 +94,13 @@ import { Admin } from './addmin/models/admin.model';
     CartModule,
     BookingModule,
     AddminModule,
+    RegionModule,
+    DistrictModule,
+    LangModule,
+    CountryModule,
+    PaymentMethodModule,
+    DeliveryMethodModule,
+    DiscountCouponModule,
   ],
   controllers: [],
   providers: [],
