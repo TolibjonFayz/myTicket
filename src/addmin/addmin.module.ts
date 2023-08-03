@@ -3,9 +3,10 @@ import { AddminController } from './addmin.controller';
 import { AddminService } from './addmin.service';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Admin } from './models/admin.model';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
-  imports: [SequelizeModule.forFeature([Admin])],
+  imports: [SequelizeModule.forFeature([Admin]), JwtModule.register({})],
   controllers: [AddminController],
   providers: [AddminService],
   exports: [AddminService],

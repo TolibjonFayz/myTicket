@@ -8,7 +8,10 @@ export class CreateAdminDto {
   login: string;
 
   @ApiProperty({ example: 'adldjasdjewkjwe', description: 'Parolingiz...' })
-  hashed_password: string;
+  password: string;
+
+  @ApiProperty({ example: 'adldjasdjewkjwe', description: 'Parolingiz...' })
+  confirm_password: string;
 
   @ApiProperty({ example: true, description: 'Faolmisiz ozi...' })
   is_active: boolean;

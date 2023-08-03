@@ -31,6 +31,7 @@ export class Admin extends Model<Admin, AdminAtr> {
   @Column({
     type: DataType.STRING,
     allowNull: false,
+    unique: true,
   })
   login: string;
 
